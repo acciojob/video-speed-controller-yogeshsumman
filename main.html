@@ -49,7 +49,7 @@
     .player__slider {
       width: 100px;
     }
-    .skip {
+    .rewind, .fastforward {
       background: #1e90ff;
       color: white;
       border: none;
@@ -60,7 +60,7 @@
 </head>
 <body>
   <div class="wrapper">
-    <video class="flex" width="765" height="430" src="https://www.w3schools.com/html/mov_bbb.mp4">
+    <video class="flex player__video" width="765" height="430" src="https://www.w3schools.com/html/mov_bbb.mp4">
       Your browser does not support the video tag.
     </video>
     <div class="progress">
@@ -70,19 +70,19 @@
       <button class="player__button toggle" title="Toggle Play">►</button>
       <input type="range" class="player__slider volume" min="0" max="1" step="0.05" value="1">
       <input type="range" class="player__slider playbackSpeed" min="0.5" max="2" step="0.1" value="1">
-      <button class="skip" data-skip="-10">« 10s</button>
-      <button class="skip" data-skip="25">25s »</button>
+      <button class="rewind" data-skip="-10">« 10s</button>
+      <button class="fastforward" data-skip="25">25s »</button>
     </div>
   </div>
 
   <script>
-    const video = document.querySelector('video');
+    const video = document.querySelector('.player__video');
     const toggleButton = document.querySelector('.toggle');
     const progressFilled = document.querySelector('.progress__filled');
     const progress = document.querySelector('.progress');
     const volumeSlider = document.querySelector('.volume');
     const playbackSpeedSlider = document.querySelector('.playbackSpeed');
-    const skipButtons = document.querySelectorAll('.skip');
+    const skipButtons = document.querySelectorAll('[data-skip]');
 
     // Toggle Play/Pause
     function togglePlay() {
